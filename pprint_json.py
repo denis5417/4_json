@@ -4,10 +4,10 @@ import sys
 def load_data(filepath):
     with open(filepath) as handle:
         data = json.load(handle)
-    return data
+    return parsed
 
-def pretty_print_json(data):
-    print(json.dumps(data, indent=4, sort_keys=True))
+def pretty_print_json(parsed):
+    print(json.dumps(parsed, indent=4, sort_keys=True))
 
 
 if __name__ == '__main__':
