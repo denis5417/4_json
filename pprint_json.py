@@ -1,18 +1,15 @@
 import json
 import sys
-import os
 
 
 def load_data(filepath):
-    if not os.path.exists(filepath):
-        print("Неверный путь к файлу")
-        return None
-    with open(filepath) as file_handler:
-        try:
+    try:
+        with open(filepath) as file_handler:
             return json.load(file_handler)
-        except json.decoder.JSONDecodeError:
-            print("В файле не JSON")
-            return None
+    except json.decoder.JSONDecodeError:
+        print("В файле не JSON")
+    except FileNotFoundError:
+        print("Файл не найден")
 
 
 def pretty_print_json(parsed_json):
