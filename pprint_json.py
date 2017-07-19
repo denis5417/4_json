@@ -5,17 +5,19 @@ import os
 
 def load_data(filepath):
     if not os.path.exists(filepath):
+        print("Неверный путь к файлу")
         return None
     with open(filepath) as file_handler:
         try:
             return json.load(file_handler)
         except json.decoder.JSONDecodeError:
+            print("В файле не JSON")
             return None
 
 
 def pretty_print_json(parsed_json):
     if not parsed_json:
-        print("Неверный путь к файлу, или в файле не JSON")
+        pass
     else:
         print(json.dumps(parsed_json, indent=4, sort_keys=True))
 
